@@ -59,6 +59,7 @@ pipeline {
             steps {
                 echo "Deployment stage"
                 //TODO("Lab 5 - Deploy to EKS"): deploy docker images
+                sh 'kubectl -n lstyles apply -f ./afs-labs-student/kubernetes/config-map.yaml'
                 sh 'kubectl -n lstyles set image deployment/app-deployment app-deployment=$HARBOR_REGISTRY/$HARBOR_PROJECT/$APP_IMAGE_NAME:$COMMIT_HASH-$PIPELINE_HASH'
 
             }
@@ -72,4 +73,4 @@ pipeline {
     }
 }
 //Test comment
-// Test comment
+// Test comment 
